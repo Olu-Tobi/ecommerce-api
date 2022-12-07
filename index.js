@@ -26,6 +26,14 @@ app.use(cors({
         "http://localhost:3000", "https://ecommerce-app-cm1a.onrender.com"
     ],
 }));
+
+app.use((req,res,next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+
+    next();  // Add this line
+})
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
