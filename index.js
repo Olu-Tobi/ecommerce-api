@@ -21,7 +21,11 @@ mongoose.connect(process.env.DB_URI)
     console.log(err);
 })
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        "http://localhost:3000", "https://ecommerce-app-cm1a.onrender.com"
+    ],
+}));
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
